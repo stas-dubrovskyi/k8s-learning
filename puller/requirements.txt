@@ -1,0 +1,6 @@
+aiohttp
+aiomysql
+environs
+jsonformatter
+peewee
+peewee_async

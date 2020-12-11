@@ -1,0 +1,12 @@
+sinks:
+  elasticsearch:
+    type: elasticsearch
+    inputs: ["message_transformer"]
+    endpoint: "http://elasticsearch-master:9200"
+    rawConfig: |
+      endpoint = "http://elasticsearch-master:9200"
+
+transforms:
+   message_transformer:
+     type: "json_parser"
+     inputs: ["kubernetes_logs"]

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: puller-settings
+
+{{- with .Values.settings }}
+data:
+{{- toYaml . | nindent 4 }}
+{{- end }}

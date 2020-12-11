@@ -1,0 +1,17 @@
+1. Manual positive detection:
+{{- if .Values.ingress.enabled }}
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  curl -H "Content-Type: text/plain" --data 'Scary VIRUS!!' --request POST http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
+  {{- end }}
+{{- end }}
+{{- end }}
+
+2. Manual negative detection
+{{- if .Values.ingress.enabled }}
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  curl -H "Content-Type: text/plain" --data 'Some funny text here :)' --request POST http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
+  {{- end }}
+{{- end }}
+{{- end }}
